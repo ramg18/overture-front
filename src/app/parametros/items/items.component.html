@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card stacked-form">
+            <div class="card-header ">
+                <h4 class="card-title">Crear item</h4>
+            </div>
+            <form [formGroup]="forma" (ngSubmit)="crearItem()">
+                <div class="card-body ">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" formControlName="nombre" name="nombre" placeholder="nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Valor del punto</label>
+                        <input type="text" formControlName="valor" name="valor" placeholder="valor" class="form-control">
+                    </div>
+
+
+                </div>
+                <div class="card-footer ">
+                    <button type="submit" class="btn btn-fill btn-info">GUARDAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card strpied-tabled-with-hover">
+            <div class="card-header ">
+                <h4 class="card-title">Listado de Items</h4>
+                <p class="card-category">Items usados para el share de la guild</p>
+            </div>
+            <div class="card-body table-full-width table-responsive">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Valor</th>
+                        <th>Opciones</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items">
+                            <td>{{item.id}}</td>
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.valorppt}}</td>
+                            <td>
+                                <a data-toggle="modal" (click)="listarItem(item.id)" data-target="#Modal" class="btn btn-link btn-warning edit"><i class="fa fa-edit"></i></a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar item</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form id="form_cambio_estado">
+                    <input type="hidden" name="id" id="id" [value]="iditem">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="nombreitem" [(ngModel)]="nombreitem" placeholder="Nombre" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Valor</label>
+                        <input type="text" name="valorppt" [(ngModel)]="valorpt" placeholder="Valor" class="form-control">
+                    </div>
+
+                    <div class="card-footer ">
+                        <button type="button" (click)="actualizar()" class="btn btn-fill btn-info">GUARDAR</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
