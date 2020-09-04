@@ -13,5 +13,15 @@ export class ShareService {
     return this._http.get(environment.url + 'listusers');
   }
 
+  GetListItem(){
+  	return this._http.get(environment.url + 'listaritems');
+  }
 
+  SaveData(users, items) {
+  	return this._http.post(environment.url + 'ingresopartida',{ users, items });
+  }
+
+  ObtenerPuntosPartida(id) {
+    return this._http.get(environment.url + 'ObtenerPuntosPartida/' + id);
+  }
 }

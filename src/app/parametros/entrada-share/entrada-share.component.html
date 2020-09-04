@@ -1,28 +1,25 @@
 <div class="row">
     <div class="col-md-12">
         <div class="row">
+            <!-- CARD TO ADD USERS -->
             <div class="col-sm-6">
                 <div class="card stacked-form">
                     <div class="card-body ">
                         <div class="card-header ">
-                            <h4 class="card-title">Crear item</h4>
+                            <h4 class="card-title">Add user</h4>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <select name="usuarioadd" [(ngModel)]="binding">
-                                      <!-- <option class="bs-title-option" value="">Single Select</option> -->
+                                <div class="col-md-9">
+                                    <select name="UserAdd" class="form-control" [(ngModel)]="UserAdd" >
+                                      <option class="bs-title-option" value=""></option>
                                       <option *ngFor="let user of users" [value]="user.id">{{ user.first_name }}  {{user.last_name}}</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <button class="btn btn-secondary" (click)="agregarUsuarioAShare()">Agregar Usuario</button>
-
+                                <div class="col-md-3">
+                                    <button class="btn btn-secondary" (click)="AddUserAssistance()">Add</button>
                                 </div>
-
                             </div>
-
-
                         </div>
                         <div class="card table-with-links">
                             <div class="card-header ">
@@ -38,68 +35,84 @@
                                             <th class="text-right">Acción</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="text-center">1</td>
-                                            <td>Andrew Mike</td>
+                                    <tbody id="Tb_Assistance">
+                                        <tr *ngFor="let user of ArrayUsersAssistance" >
+                                            <td class="text-center">{{ user.id }}</td>
+                                            <td>{{ user.first_name }} {{user.last_name}}</td>
                                             <td class="td-actions text-right">
-                                                <a href="#" rel="tooltip" title="" class="btn btn-danger btn-link btn-xs" data-original-title="Remove">
+                                                <a href="#" rel="tooltip" title="" class="btn btn-danger btn-link btn-xs" data-original-title="Remove" (click)="DeleteUserAssistance(user.id)" >
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
+
+            <!-- CARD TO ADD ITEMS -->
             <div class="col-sm-6">
                 <div class="card stacked-form">
-
-
                     <div class="card-body ">
-
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Refining gem</label>
-                                <input type="text" name="valor" placeholder="valor" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>METALES</label>
-                                <input type="text" name="valor" placeholder="valor" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>MAPS</label>
-                                <input type="text" name="valor" placeholder="valor" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>FELS</label>
-                                <input type="text" name="valor" placeholder="valor" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>TEF</label>
-                                <input type="text" name="valor" placeholder="valor" class="form-control">
+                        <div class="card-header ">
+                            <h4 class="card-title">Add item</h4>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select name="ItemAdd" class="form-control" [(ngModel)]="ItemAdd">
+                                        <option class="bs-title-option" value=""></option>
+                                        <option *ngFor="let item of items" [value]="item.id">{{ item.nombre }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" name="ItemAmount" [(ngModel)]="ItemAmount" class="form-control" placeholder="Cantidad">
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-secondary" (click)="AddItemAmount()">Add</button>
+                                </div>
                             </div>
                         </div>
-
-
-
+                        <div class="card table-with-links">
+                            <div class="card-header ">
+                                <h4 class="card-title">Tabla de Items</h4>
+                                <p class="card-category">Aqui podrás ingresar de items del maze</p>
+                            </div>
+                            <div class="card-body table-full-width">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>Item</th>
+                                            <th>Cantidad</th>
+                                            <th class="text-right">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="Tb_ItemAmount">
+                                        <tr *ngFor="let item of ArrayItemsAmount" >
+                                            <td class="text-center">{{ item.id }}</td>
+                                            <td>{{ item.name }}</td>
+                                            <td>{{ item.amount }}</td>
+                                            <td class="td-actions text-right">
+                                                <a href="#" rel="tooltip" title="" class="btn btn-danger btn-link btn-xs" data-original-title="Remove" (click)="DeleteItemAmount(item.id)" >
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-footer ">
-                        <button type="submit" class="btn btn-fill btn-info">GUARDAR</button>
-                    </div>
-
                 </div>
             </div>
+
+            <div class="col-md-12">
+                <button class="btn btn-secondary" (click)="SaveData()">Save</button>
+            </div>
         </div>
-
     </div>
-    <div class="col-md-12">
-
-    </div>
-
 </div>

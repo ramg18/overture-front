@@ -6,9 +6,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ParametrosRoutingModule } from './parametros-routing.module';
 import { ItemsComponent } from './items/items.component';
 import { EntradaShareComponent } from './entrada-share/entrada-share.component';
+import { MostrarPuntosPartidaComponent } from './mostrar-puntos-partida/mostrar-puntos-partida.component';
 
 @NgModule({
-  declarations: [ParametrosComponent, ItemsComponent, EntradaShareComponent],
+  declarations: [ParametrosComponent, ItemsComponent, EntradaShareComponent, MostrarPuntosPartidaComponent],
   imports: [
     CommonModule,
     ParametrosRoutingModule,

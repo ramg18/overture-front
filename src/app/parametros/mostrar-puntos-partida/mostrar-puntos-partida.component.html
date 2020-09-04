@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <!-- CARD TO ADD USERS -->
+            <div class="col-sm-12">
+                <div class="card stacked-form">
+                    <div class="card-body ">
+                        <div class="card-header ">
+                            <h4 class="card-title">Partida</h4>
+                        </div>
+                        <div class="card table-with-links">
+                            <div class="card-header ">
+                                <h4 class="card-title">Tabla de puntos</h4>
+                            </div>
+                            <div class="card-body table-full-width">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center"># Usuario</th>
+                                            <th>Nombre Usuario</th>
+                                            <th class="text-center"># Item</th>
+                                            <th>Nombre Item</th>
+                                            <th class="text-center">Puntos Totales</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let data of DataCompleta" >
+                                            <td class="text-center">{{ data.id_usuario }}</td>
+                                            <td>{{ data.nombre_usuario }}</td>
+                                            <td class="text-center">{{ data.id_item }}</td>
+                                            <td>{{ data.nombre_item }}</td>
+                                            <td class="text-center">{{ data.total_puntos }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
